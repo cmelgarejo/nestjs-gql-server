@@ -1,0 +1,68 @@
+type Geo {
+  lat: Float
+  lon: Float
+}
+
+type Address {
+  street: String
+  suite: String
+  city: String
+  zipcode: String
+  geo: Geo
+}
+
+type Company {
+  name: String
+  catchPhrase: String
+  bs: String
+}
+type User {
+  id: Int!
+  username: String
+  name: String
+  phone: String
+  website: String
+  address: Address
+  company: Company
+  posts: [Post]
+}
+
+type Todo {
+  id: Int
+  userId: Int
+  title: String
+  completed: Boolean
+  user: User
+}
+
+type Post {
+  id: Int
+  userId: Int
+  title: String
+  body: String
+  user: User
+}
+
+type Query {
+  users(
+    id: Int
+    sortByField: String
+    sortByDirection: String
+    startsWithField: String
+    startsWith: String
+  ): [User!]
+  posts(
+    id: Int
+    sortByField: String
+    sortByDirection: String
+    startsWithField: String
+    startsWith: String
+  ): [Post!]
+  todos(
+    id: Int
+    sortByField: String
+    sortByDirection: String
+    startsWithField: String
+    startsWith: String
+  ): [Todo!]
+}
